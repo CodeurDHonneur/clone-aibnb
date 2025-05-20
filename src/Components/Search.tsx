@@ -2,8 +2,7 @@ import React from 'react'
 import { IoSearchSharp } from "react-icons/io5";
 
 export default function Search() {
-    const [isHovered, setIsHovered] = React.useState(false);
-    
+    const [isHovered, setIsHovered] = React.useState<null | number>(null);
     
     const navigationValue = [
         {id: 0, paragraph: 'Destination', span: 'Recherchez une destination'},
@@ -39,27 +38,32 @@ export default function Search() {
                         justifyContent: 'center',
                         alignItems: 'flex-start',
                         marginBlock: '10px',
-                        backgroundColor: isHovered ? ' #e2e8f0' : 'white',
-                        borderRadius: isHovered ? '40px' : '',
+                        backgroundColor: isHovered === value.id ? ' #e2e8f0' : 'white',
+                        borderRadius: isHovered === value.id  ? '40px' : '',
                         border: 'none',
                         // marginLeft: '20px',
                         padding: '15px'
                     }}
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
+                    onMouseEnter={() => setIsHovered(value.id)}
+                    onMouseLeave={() => setIsHovered(null)}
                 >
                     <p style={{ fontSize: '0.875rem', fontWeight: 'bold', marginBlock: '2px' }}>{value.paragraph}</p>
                     <span style={{ fontSize: '0.875rem' }}>{value.span}</span>
                 </button>
             ))}
                
-                <button style={{
+                {/* <button style={{
+                    width: 
                     borderRadius: '40px',
-                    backgroundColor: '#ff5a5f'
+                    backgroundColor: '#ff5a5f',
+                    color: 'white',
+                    borderRadius: '100%'
                 }}>
- 
-                </button>
+                    <IoSearchSharp />
+                </button> */}
             </div>
         </div>
     )
 }
+
+// 22min
