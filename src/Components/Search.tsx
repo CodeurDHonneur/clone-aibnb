@@ -26,7 +26,8 @@ export default function Search() {
                 overflow: 'hidden',
                 borderRadius: '40px',
                 display: 'flex',
-                justifyContent: 'space-around'
+                justifyContent: 'space-around',
+                alignItems: 'center'
             }}>
 
             {navigationValue.map(value => (
@@ -52,15 +53,20 @@ export default function Search() {
                 </button>
             ))}
                
-                {/* <button style={{
-                    width: 
-                    borderRadius: '40px',
+                <button style={{
+                    width: '45px',
+                    height: '45px',
+                    border: '1px solid white',
                     backgroundColor: '#ff5a5f',
                     color: 'white',
-                    borderRadius: '100%'
+                    borderRadius: '100%',
+                    fontSize: '1.5rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
                 }}>
                     <IoSearchSharp />
-                </button> */}
+                </button>
             </div>
         </div>
     )
