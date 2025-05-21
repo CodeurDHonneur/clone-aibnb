@@ -42,7 +42,6 @@ export default function Search() {
                         backgroundColor: isHovered === value.id ? ' #e2e8f0' : 'white',
                         borderRadius: isHovered === value.id  ? '40px' : '',
                         border: 'none',
-                        // marginLeft: '20px',
                         padding: '15px'
                     }}
                     onMouseEnter={() => setIsHovered(value.id)}
