@@ -25,6 +25,14 @@
             * le bouton de scroll droit
             * le bouton de filtrage
         * `handleScroll` 
+* Mise en place du `store`
+* mise en place du `CardSlice`
+* montage dans le `main`
+* Création des composants `Card` et `CardList`
+* installation package `npm i react-responsive-carousel`
+
+
+
 
 * Liste des icones par composant : 
   * Nav 
