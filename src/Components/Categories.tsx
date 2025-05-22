@@ -22,6 +22,9 @@ type Icon = {
 export default function Categories() {
     const [scrollPosition, setScrollPosition] = React.useState(0);
     const [isHovered, setIsHovered] = React.useState<null | number>(null);
+    const containerRef = React.useRef<HTMLDivElement>(null);
+    const [containerWidth, setContainerWidth] = useState(0);
+     const scrollWidth = 128; //saut de scroll
 
 
     const categoriesList: Icon[] = [
@@ -48,20 +51,37 @@ export default function Categories() {
         { name: 'Retraite spirituelle', icon: <GiYinYang /> },
     ];
 
+    React.useEffect(() => {
+        const updateWidth = () => {
+            if (containerRef.current) {
+                setContainerWidth(containerRef.current.offsetWidth);
+            }
+        };
+        updateWidth();
+
+        // Mets à jour si la fenêtre change
+        window.addEventListener('resize', updateWidth);
+        return () => window.removeEventListener('resize', updateWidth);
+    }, []);
+
+
     const handleScroll = (direction: ScrollDirection) => {
-        const scrollWidth = 250; //saut de scroll
-        const containerWidth = 400; //taille du conteneur
+       
+      
 
         if (direction === ScrollDirection.LEFT) {
-            setScrollPosition(Math.max(scrollPosition - scrollWidth, 0));
-        } 
+            setScrollPosition(Math.max(scrollPosition - scrollWidth, 0)); //l'objectif est d'empêcher qu'on récule en dessous de zéro
+        }
         else if (direction === ScrollDirection.RIGHT) {
             setScrollPosition(Math.min(scrollPosition + scrollWidth, categoriesList.length * scrollWidth - containerWidth));
         }
+
     }
 
 
     return (
+
+        // conteneur principal
         <div style={{
             position: 'relative',
             paddingTop: '1.5rem',
@@ -90,17 +110,20 @@ export default function Categories() {
                 </button>
             )}
 
-            <div style={{
+            <div 
+            ref={containerRef}
+            style={{
                 display: 'flex',
                 alignItems: 'center',
-                overflow: 'hidden'
+                overflow: 'hidden',
+
             }}>
                 <div style={{
                     display: 'flex',
                     transitionProperty: 'all',
                     transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
                     transitionDuration: '150ms',
-                    transform: `translateX(-${ scrollPosition }px)`
+                    transform: `translateX(-${scrollPosition}px)`
                 }}>
                     <div style={{
                         display: 'flex',
@@ -151,7 +174,7 @@ export default function Categories() {
 
             </div>
             {
-                scrollPosition < categoriesList.length * 200 - 400 && (
+                scrollPosition < categoriesList.length * scrollWidth - containerWidth && (
                     <button onClick={() => handleScroll(ScrollDirection.RIGHT)}
                         style={{
                             padding: '0.25rem',

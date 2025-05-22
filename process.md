@@ -14,7 +14,17 @@
 * Création du composant `Categories (composant)`
    * Apport des icones et de la variable `categoriesList`
    * méthode `handleScroll`
-
+   * fonctionnement du `scroll` : 
+   * Il est constitué de plusieurs balises qui sont les suivantes : 
+       * le conteneur principal qui est une `div`. les éléments enfants qu'il contient sont les suivants : 
+            * le bouton de scroll gauche  
+            * une `div` contenant la `div`, parente des catégories. Sa particularité est le `overflow` pour cacher la partie de son enfant qui déborde.
+                 * l'enfant contenant les catégories a la particularité d'avoir un `transform` qui à chaque scroll lui permet de glisser dans son parent soit de la gauche vers la droite, soit de la droite vers la gauche.
+                 * un clique droit fait glisser l'élément vers la gauche
+                 * un clique gauche fait glisser l'élement vers la droite
+            * le bouton de scroll droit
+            * le bouton de filtrage
+        * `handleScroll` 
 
 * Liste des icones par composant : 
   * Nav 
