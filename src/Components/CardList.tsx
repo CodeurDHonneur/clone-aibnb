@@ -1,10 +1,10 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectCards, setCards } from '../slice/CardSlice'
+import { selectCards, setCards } from '../slice/cardSlice'
 import data from "../data/data.json"
 import Card from "./Card"
 
-export default function CardList() {
+const CardList: React.FC = () => {
     const dispatch = useDispatch();
     const cards = useSelector(selectCards);
 
@@ -32,3 +32,6 @@ export default function CardList() {
         </div>
     )
 }
+
+
+export default CardList;

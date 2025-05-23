@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import CardListReducer from "../slice/CardListReducer";
+import cardListReducer from '../slice/cardSlice';
 
 export const store = configureStore({
     reducer: {
-        cardList: CardListReducer
+        cardList: cardListReducer
     }
 
 });
 
 
-export type typeRootState = ReturnType<typeof store.getState>;
+export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
