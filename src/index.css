@@ -41,5 +41,5 @@ ul {
 
 
 .hoverElement:hover {
-
+    text-decoration: underline;
 }

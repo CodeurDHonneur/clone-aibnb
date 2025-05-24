@@ -32,6 +32,7 @@
 * installation package `npm i react-responsive-carousel`
 
 
+Composant important sur lesquels travailler : 
 
 
 * Liste des icones par composant : 
